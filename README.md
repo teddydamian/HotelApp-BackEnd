@@ -15,4 +15,4 @@ The hotel table inherits the foreign key of Location Name from the location tabl
 
 Each room has its own nickname, but inherits its location as a foreign key. Every hotel can have many rooms, and every room type can be in many hotels, as is represented by the many-many relationships. There are also many amenities that are available to each room, but every room can only have one amenity package.
 
-![ERD Diagram]
+![ERD Diagram](https://github.com/teddydamian/ASYNC-Inn/blob/master/assets/ERD%20Diagram.png)
