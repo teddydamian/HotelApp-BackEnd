@@ -6,20 +6,18 @@
         <State name="__root__">
           <Node name="ASYNC_InnTDCB" expanded="True">
             <Node name="ASYNC_InnTDCB" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
               <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Amenities.cs" selected="True" />
+              </Node>
+              <Node name="Pages" expanded="True" />
               <Node name="Properties" expanded="True">
                 <Node name="Data" expanded="True" />
               </Node>
-              <Node name="appsettings.json" selected="True" />
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
