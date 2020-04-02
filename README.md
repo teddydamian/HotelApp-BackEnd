@@ -16,3 +16,10 @@ The hotel table inherits the foreign key of Location Name from the location tabl
 Each room has its own nickname, but inherits its location as a foreign key. Every hotel can have many rooms, and every room type can be in many hotels, as is represented by the many-many relationships. There are also many amenities that are available to each room, but every room can only have one amenity package.
 
 ![ERD Diagram](https://github.com/teddydamian/ASYNC-Inn/blob/master/assets/ERD%20Diagram.png)
+
+- Download Docker
+- Download SQL Server on Mac
+- run this command for container:
+`docker run -d --name sql_server_demo -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=reallyStrongPwd123' -p 1433:1433 microsoft/mssql-server-linux`
+- Strong password required
+- Double check username
