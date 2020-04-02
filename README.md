@@ -24,3 +24,18 @@ Each room has its own nickname, but inherits its location as a foreign key. Ever
 `docker run -d --name sql_server_demo -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=reallyStrongPwd123' -p 1433:1433 microsoft/mssql-server-linux`
 - Strong password required
 - Double check username
+
+# Next Step
+Using ERD Diagram, convert each entity into a model within your newly created MVC web application.
+#### Direction
+- For each Entity that you have in your ERD, create a new class in your Models folder.
+- Inside your DbContext, create a new table/DbSet<T> for each of your created entity classes
+- Add your composite key associations to your overridden OnModelCreating method.
+- Run the command add-migration {nameOfMigration}
+- Run the command Update-database and confirm your database now has the appropriate tables.
+
+![Table in Db](https://github.com/teddydamian/ASYNC-Inn/blob/master/assets/Table.png)
+
+### Change Log
+1.0 Created MVC, Database. April 1st 2020
+1.1 Created Database Tables with Columns and Keys. April 2nd 2020
