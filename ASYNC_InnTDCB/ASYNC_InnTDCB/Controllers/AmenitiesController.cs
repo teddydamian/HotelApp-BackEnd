@@ -7,147 +7,76 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASYNC_InnTDCB.Models;
 using ASYNC_InnTDCB.Properties.Data;
+using ASYNC_InnTDCB.Models.Interfaces;
 
 namespace ASYNC_InnTDCB.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AmenitiesController : Controller
     {
-        private readonly ASYNCinnDbContext _context;
+        private readonly IAmenitiesManager _amenities;
 
-        public AmenitiesController(ASYNCinnDbContext context)
+        public AmenitiesController(IAmenitiesManager amenities)
         {
-            _context = context;
+            _amenities = amenities;
         }
 
-        // GET: Amenities
-        public async Task<IActionResult> Index()
+        // GET: api/Amenities
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Amenities>>> GetAmenities()
         {
-            return View(await _context.Amenities.ToListAsync());
+            return await _amenities.GetAllAmenities();
         }
 
-        // GET: Amenities/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: api/Amenities/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Amenities>> GetAmenitie(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var amenities = await _amenities.GetAmenitieByID(id);
 
-            var amenities = await _context.Amenities
-                .FirstOrDefaultAsync(m => m.ID == id);
             if (amenities == null)
             {
                 return NotFound();
             }
 
-            return View(amenities);
+            return amenities;
         }
 
-        // GET: Amenities/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Amenities/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name")] Amenities amenities)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(amenities);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(amenities);
-        }
-
-        // GET: Amenities/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var amenities = await _context.Amenities.FindAsync(id);
-            if (amenities == null)
-            {
-                return NotFound();
-            }
-            return View(amenities);
-        }
-
-        // POST: Amenities/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name")] Amenities amenities)
+        // PUT: api/Amenities/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAmenities(int id, Amenities amenities)
         {
             if (id != amenities.ID)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(amenities);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AmenitiesExists(amenities.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(amenities);
+            await _amenities.UpdateAmenities(id, amenities);
+
+            return NoContent();
         }
 
-        // GET: Amenities/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // POST: api/Amenities
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPost]
+        public async Task<ActionResult<Amenities>> PostAmenities(Amenities amenities)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var result = await _amenities.CreateAmenities(amenities);
 
-            var amenities = await _context.Amenities
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (amenities == null)
-            {
-                return NotFound();
-            }
-
-            return View(amenities);
+            return CreatedAtAction("GetAmenities", new { id = result.ID }, result);
         }
 
-        // POST: Amenities/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        // DELETE: api/Amenities/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Amenities>> DeleteAmenities(int id)
         {
-            var amenities = await _context.Amenities.FindAsync(id);
-            _context.Amenities.Remove(amenities);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            await _amenities.RemoveAmenities(id);
 
-        private bool AmenitiesExists(int id)
-        {
-            return _context.Amenities.Any(e => e.ID == id);
+            return NoContent();
         }
     }
 }

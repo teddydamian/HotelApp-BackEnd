@@ -11,10 +11,20 @@ namespace ASYNC_InnTDCB.Models.Services
     {
         private ASYNCinnDbContext _context;
 
+        /// <summary>
+        /// Connecting DB to CRUD
+        /// </summary>
+        /// <param name="context"></param>
         public HotelService(ASYNCinnDbContext context)
         {
             _context = context;
         }
+
+        /// <summary>
+        /// Create a Hotel
+        /// </summary>
+        /// <param name="hotel"></param>
+        /// <returns></returns>
         public async Task<Hotel> CreateHotel(Hotel hotel)
         {
             _context.Hotels.Add(hotel);
@@ -23,17 +33,31 @@ namespace ASYNC_InnTDCB.Models.Services
             return hotel;
         }
 
+        /// <summary>
+        /// Get all hotels
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Hotel>> GetAllHotels()
         {
             return await _context.Hotels.ToListAsync();
         }
 
+        /// <summary>
+        /// Get a hotel by ID
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         public async Task<Hotel> GetHotelByID(int hotelID)
         {
             Hotel hotel = await _context.Hotels.FindAsync(hotelID);
             return hotel;
         }
 
+        /// <summary>
+        /// Delete a hotel
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         public async Task RemoveHotel(int hotelID)
         {
             Hotel hotel = await GetHotelByID(hotelID);
@@ -42,6 +66,12 @@ namespace ASYNC_InnTDCB.Models.Services
 
         }
 
+        /// <summary>
+        /// Update a hotel
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <param name="hotel"></param>
+        /// <returns></returns>
         public async Task UpdateHotel(int hotelID, Hotel hotel)
         {
             _context.Entry(hotel).State = EntityState.Modified;
