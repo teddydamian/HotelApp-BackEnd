@@ -8,6 +8,8 @@
     <Folder Include="Properties\Data\" />
     <Folder Include="Models\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Models\Interfaces\" />
+    <Folder Include="Models\Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3">

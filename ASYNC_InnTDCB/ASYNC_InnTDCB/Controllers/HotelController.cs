@@ -7,147 +7,76 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASYNC_InnTDCB.Models;
 using ASYNC_InnTDCB.Properties.Data;
+using ASYNC_InnTDCB.Models.Interfaces;
 
 namespace ASYNC_InnTDCB.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class HotelController : Controller
     {
-        private readonly ASYNCinnDbContext _context;
+        private readonly IHotelManager _hotel;
 
-        public HotelController(ASYNCinnDbContext context)
+        public HotelController(IHotelManager hotel)
         {
-            _context = context;
+            _hotel = hotel;
         }
 
-        // GET: Hotel
-        public async Task<IActionResult> Index()
+        // GET: api/Hotels
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Hotel>>> GetHotels()
         {
-            return View(await _context.Hotels.ToListAsync());
+            return await _hotel.GetAllHotels();
         }
 
-        // GET: Hotel/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: api/Hotels/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Hotel>> GetHotel(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var hotel = await _hotel.GetHotelByID(id);
 
-            var hotel = await _context.Hotels
-                .FirstOrDefaultAsync(m => m.ID == id);
             if (hotel == null)
             {
                 return NotFound();
             }
 
-            return View(hotel);
+            return hotel;
         }
 
-        // GET: Hotel/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Hotel/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,StreetAddress,City,State,Phone")] Hotel hotel)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(hotel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(hotel);
-        }
-
-        // GET: Hotel/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var hotel = await _context.Hotels.FindAsync(id);
-            if (hotel == null)
-            {
-                return NotFound();
-            }
-            return View(hotel);
-        }
-
-        // POST: Hotel/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,StreetAddress,City,State,Phone")] Hotel hotel)
+        // PUT: api/Hotels/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutHotel(int id, Hotel hotel)
         {
             if (id != hotel.ID)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(hotel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!HotelExists(hotel.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(hotel);
+            await _hotel.UpdateHotel(id, hotel);
+
+            return NoContent();
         }
 
-        // GET: Hotel/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // POST: api/Hotels
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPost]
+        public async Task<ActionResult<Hotel>> PostHotel(Hotel hotel)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var result = await _hotel.CreateHotel(hotel);
 
-            var hotel = await _context.Hotels
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (hotel == null)
-            {
-                return NotFound();
-            }
-
-            return View(hotel);
+            return CreatedAtAction("GetHotel", new { id = result.ID }, result);
         }
 
-        // POST: Hotel/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        // DELETE: api/Hotels/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Hotel>> DeleteHotel(int id)
         {
-            var hotel = await _context.Hotels.FindAsync(id);
-            _context.Hotels.Remove(hotel);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            await _hotel.RemoveHotel(id);
 
-        private bool HotelExists(int id)
-        {
-            return _context.Hotels.Any(e => e.ID == id);
+            return NoContent();
         }
     }
 }
