@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASYNC_InnTDCB.Models.Interfaces;
+using ASYNC_InnTDCB.Models.Services;
 using ASYNC_InnTDCB.Properties.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +35,9 @@ namespace ASYNC_InnTDCB
 
             services.AddDbContext<ASYNCinnDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //Mappings for Dependency Injection
+            services.AddTransient<IHotelManager, HotelService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
