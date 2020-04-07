@@ -22,14 +22,14 @@ namespace ASYNC_InnTDCB.Controllers
             _hotel = hotel;
         }
 
-        // GET: api/Hotels
+        // GET: api/Hotel
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Hotel>>> GetHotels()
         {
             return await _hotel.GetAllHotels();
         }
 
-        // GET: api/Hotels/5
+        // GET: api/Hotel/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Hotel>> GetHotel(int id)
         {
@@ -43,7 +43,7 @@ namespace ASYNC_InnTDCB.Controllers
             return hotel;
         }
 
-        // PUT: api/Hotels/5
+        // PUT: api/Hotel/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
@@ -59,7 +59,7 @@ namespace ASYNC_InnTDCB.Controllers
             return NoContent();
         }
 
-        // POST: api/Hotels
+        // POST: api/Hotel
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
