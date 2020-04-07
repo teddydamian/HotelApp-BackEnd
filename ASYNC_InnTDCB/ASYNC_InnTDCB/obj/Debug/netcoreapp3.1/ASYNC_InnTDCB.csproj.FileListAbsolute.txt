@@ -176,3 +176,8 @@
 /Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/Amenities/Details.cshtml.g.cs
 /Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/Amenities/Edit.cshtml.g.cs
 /Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/Amenities/Index.cshtml.g.cs
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/RoomAmenities/Create.cshtml.g.cs
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/RoomAmenities/Delete.cshtml.g.cs
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/RoomAmenities/Details.cshtml.g.cs
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/RoomAmenities/Edit.cshtml.g.cs
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/RoomAmenities/Index.cshtml.g.cs
