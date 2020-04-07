@@ -36,6 +36,14 @@ Using ERD Diagram, convert each entity into a model within your newly created MV
 
 ![Table in Db](https://github.com/teddydamian/ASYNC-Inn/blob/master/assets/Table.png)
 
+# Next Step
+- Create Interface.
+- Setup Service.
+- Fix Controllers.
+- Make API calls 
+![API](https://github.com/teddydamian/ASYNC-Inn/blob/master/assets/Rooms.png)
+
 ### Change Log
 1.0 Created MVC, Database. April 1st 2020
 1.1 Created Database Tables with Columns and Keys. April 2nd 2020
+1.2 Created CRUD Operations and Seeded Database using Database injection. April 7th 2020
