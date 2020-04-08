@@ -36,6 +36,13 @@ namespace ASYNC_InnTDCB
             services.AddDbContext<ASYNCinnDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            // Loop Handler
+            services.AddControllers()
+                    .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    );
+
+
             //Mappings for Dependency Injection
             services.AddTransient<IHotelManager, HotelService>();
             services.AddTransient<IRoomManager, RoomService>();

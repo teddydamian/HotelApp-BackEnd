@@ -181,3 +181,13 @@
 /Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/RoomAmenities/Details.cshtml.g.cs
 /Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/RoomAmenities/Edit.cshtml.g.cs
 /Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/Debug/netcoreapp3.1/Razor/Views/RoomAmenities/Index.cshtml.g.cs
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/bin/Debug/netcoreapp3.1/System.Web.Mvc.dll
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/bin/Debug/netcoreapp3.1/System.Web.Razor.dll
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/bin/Debug/netcoreapp3.1/System.Web.Helpers.dll
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/bin/Debug/netcoreapp3.1/System.Web.WebPages.Deployment.dll
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/bin/Debug/netcoreapp3.1/System.Web.WebPages.Razor.dll
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/bin/Debug/netcoreapp3.1/System.Web.WebPages.dll
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/bin/Debug/netcoreapp3.1/Microsoft.Web.Infrastructure.dll
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.JsonPatch.dll
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/bin/Debug/netcoreapp3.1/Newtonsoft.Json.Bson.dll
