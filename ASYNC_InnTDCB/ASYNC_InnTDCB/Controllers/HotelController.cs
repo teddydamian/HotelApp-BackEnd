@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ASYNC_InnTDCB.Models;
 using ASYNC_InnTDCB.Properties.Data;
 using ASYNC_InnTDCB.Models.Interfaces;
+using ASYNC_InnTDCB.DTO;
 
 namespace ASYNC_InnTDCB.Controllers
 {
@@ -29,9 +30,10 @@ namespace ASYNC_InnTDCB.Controllers
             return await _hotel.GetAllHotels();
         }
 
+        //Change the Hotel to HotelDTO in task asctionResult cos GetHotelID is returning hotelDTO
         // GET: api/Hotel/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Hotel>> GetHotel(int id)
+        public async Task<ActionResult<HotelDTO>> GetHotel(int id)
         {
             var hotel = await _hotel.GetHotelByID(id);
 

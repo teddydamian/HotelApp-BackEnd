@@ -14,7 +14,7 @@
         "outputPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/ASYNC-Inn/ASYNC_InnTDCB/ASYNC_InnTDCB/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/teddydamian/.nuget/NuGet/NuGet.Config"
+          "/Users/teddydamian/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -36,6 +36,18 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.3, )"
@@ -63,6 +75,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             }
           },
           "imports": [

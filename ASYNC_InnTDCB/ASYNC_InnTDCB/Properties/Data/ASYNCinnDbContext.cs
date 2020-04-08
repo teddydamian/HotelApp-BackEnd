@@ -135,6 +135,23 @@ namespace ASYNC_InnTDCB.Properties.Data
                 }
                 );
 
+            modelBuilder.Entity<HotelRoom>().HasData(
+                new HotelRoom
+                {
+                    HotelID = 1,
+                    RoomID = 1,
+                    PetFriendly = true,
+                    Rate = 100m
+
+                },
+                new HotelRoom
+                {
+                    HotelID = 2,
+                    RoomID = 2,
+                    PetFriendly = true,
+                    Rate = 200m
+                }
+                );
         }
 
         public ASYNCinnDbContext(DbContextOptions<ASYNCinnDbContext> options) :base(options)
