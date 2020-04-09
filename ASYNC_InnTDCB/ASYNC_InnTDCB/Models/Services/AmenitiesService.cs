@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using ASYNC_InnTDCB.DTO;
 using ASYNC_InnTDCB.Models.Interfaces;
 using ASYNC_InnTDCB.Properties.Data;
 using Microsoft.EntityFrameworkCore;
@@ -51,8 +53,39 @@ namespace ASYNC_InnTDCB.Models.Services
             public async Task<Amenities> GetAmenitieByID(int amenitiesID)
             {
             Amenities amenities = await _context.Amenities.FindAsync(amenitiesID);
-                return amenities;
-            }
+            return amenities;
+
+            //Amenities amenities = new Amenities();
+            //AmenitiesDTO amenitiesdto = new AmenitiesDTO();
+
+            //amenities = _context.Amenities.Find(amenitiesID);
+            //amenitiesdto.Name = amenities.Name;
+            //amenitiesdto.ID = amenities.ID;
+
+
+            //var roomAmenities = await _context.RoomAmenities.Where(x => x.AmenitiesID == amenitiesID)
+            //    .Include(x => x.RoomID)
+            //    .ToListAsync();
+
+            //List<AmenitiesDTO> room = new List<AmenitiesDTO>();
+
+            //foreach (var ra in roomAmenities)
+            //{
+            //    AmenitiesDTO amy = new AmenitiesDTO();
+            //    amy.ID = ra.RoomID;
+            //    amy.Name = ra.Amenities.Name;
+            //    RoomDTO rdto = new RoomDTO
+            //    {
+
+
+            //        Name = hr.Room.Name
+            //    };
+            //    room.Add(rm);
+
+            //}
+            //hoteldto.Rooms = room;
+            //return hoteldto;
+        }
 
             /// <summary>
             /// Delete amenities by ID

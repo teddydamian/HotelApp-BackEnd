@@ -107,6 +107,19 @@ namespace ASYNC_InnTDCB.Properties.Data
                 }
                 );
 
+
+
+            modelBuilder.Entity<HotelRoom>().HasData(
+                new HotelRoom
+                {
+                    HotelID = 4,
+                    RoomID = 4,
+                    PetFriendly = false,
+                    Rate = 400m,
+                    RoomNumber = 401
+                }
+                );
+
             modelBuilder.Entity<Amenities>().HasData(
                 new Amenities
                 {
@@ -133,25 +146,7 @@ namespace ASYNC_InnTDCB.Properties.Data
                     ID = 5,
                     Name = "Backyard"
                 }
-                );
-
-            modelBuilder.Entity<HotelRoom>().HasData(
-                new HotelRoom
-                {
-                    HotelID = 1,
-                    RoomID = 1,
-                    PetFriendly = true,
-                    Rate = 100m
-
-                },
-                new HotelRoom
-                {
-                    HotelID = 2,
-                    RoomID = 2,
-                    PetFriendly = true,
-                    Rate = 200m
-                }
-                );
+    );
         }
 
         public ASYNCinnDbContext(DbContextOptions<ASYNCinnDbContext> options) :base(options)
