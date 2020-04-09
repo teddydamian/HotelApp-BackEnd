@@ -3,14 +3,16 @@ using ASYNC_InnTDCB.Properties.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ASYNC_InnTDCB.Migrations
 {
     [DbContext(typeof(ASYNCinnDbContext))]
-    partial class ASYNCinnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200408181050_SeedMore")]
+    partial class SeedMore
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,11 +162,27 @@ namespace ASYNC_InnTDCB.Migrations
                     b.HasData(
                         new
                         {
-                            HotelID = 4,
-                            RoomNumber = 401,
+                            HotelID = 1,
+                            RoomNumber = 101,
+                            PetFriendly = true,
+                            Rate = 100m,
+                            RoomID = 1
+                        },
+                        new
+                        {
+                            HotelID = 2,
+                            RoomNumber = 201,
+                            PetFriendly = true,
+                            Rate = 200m,
+                            RoomID = 2
+                        },
+                        new
+                        {
+                            HotelID = 3,
+                            RoomNumber = 301,
                             PetFriendly = false,
-                            Rate = 400m,
-                            RoomID = 4
+                            Rate = 300m,
+                            RoomID = 3
                         });
                 });
 

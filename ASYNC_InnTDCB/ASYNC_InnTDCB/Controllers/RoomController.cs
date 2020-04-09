@@ -45,9 +45,9 @@ namespace ASYNC_InnTDCB.Controllers
 
         // GET: Room/Details/5
         [HttpGet("{amenitiesId}, {roomId}")]
-        public async Task<ActionResult<IEnumerable<RoomAmenities>>> GetAllRoomAmenities(int amenitiesId, int roomId)
+        public async Task<ActionResult<IEnumerable<Amenities>>> GetAllRoomAmenities(int roomId)
         {
-            return await _room.GetAllRoomAmenities(amenitiesId, roomId);
+            return await _room.GetAllRoomAmenities(roomId);
         }
 
         // PUT: api/Room/5

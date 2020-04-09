@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ASYNC_InnTDCB.Models.Interfaces;
 using ASYNC_InnTDCB.Properties.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASYNC_InnTDCB.Models.Services
@@ -84,9 +86,13 @@ namespace ASYNC_InnTDCB.Models.Services
         /// <param name="amenitiesId"></param>
         /// <param name="roomId"></param>
         /// <returns></returns>
-        public async Task<List<RoomAmenities>> GetAllRoomAmenities(int amenitiesId, int roomId)
+        public async Task<List<Amenities>> GetAllRoomAmenities(int roomId)
         {
-            return await _context.RoomAmenities.ToListAsync();
+            var roomAmenities = await _context.RoomAmenities.Where(roomAmenities => roomAmenities.RoomID == roomId)
+                                                            .Include(RoomAmenities => RoomAmenities.Amenities)
+                                                            .Select(amenity => amenity.Amenities)
+                                                            .ToListAsync();
+            return roomAmenities;
         }
     }
 }

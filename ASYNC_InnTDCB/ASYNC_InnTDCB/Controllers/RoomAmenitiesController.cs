@@ -10,6 +10,8 @@ using ASYNC_InnTDCB.Properties.Data;
 
 namespace ASYNC_InnTDCB.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class RoomAmenitiesController : Controller
     {
         private readonly ASYNCinnDbContext _context;

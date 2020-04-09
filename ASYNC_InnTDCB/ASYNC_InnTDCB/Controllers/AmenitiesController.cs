@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ASYNC_InnTDCB.Models;
 using ASYNC_InnTDCB.Properties.Data;
 using ASYNC_InnTDCB.Models.Interfaces;
+using ASYNC_InnTDCB.DTO;
 
 namespace ASYNC_InnTDCB.Controllers
 {

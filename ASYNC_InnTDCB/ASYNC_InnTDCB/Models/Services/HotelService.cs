@@ -69,7 +69,7 @@ namespace ASYNC_InnTDCB.Models.Services
 
             hotel = _context.Hotels.Find(hotelID);
             hoteldto.Name = hotel.Name;
-            hoteldto.PhoneNumber = hotel.Phone;
+            hoteldto.Phone = hotel.Phone;
             hoteldto.City = hotel.City;
 
             var hotelRooms = await _context.HotelRooms.Where(x => x.HotelID == hotelID)
