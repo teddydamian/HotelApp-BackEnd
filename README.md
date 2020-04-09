@@ -43,6 +43,9 @@ Using ERD Diagram, convert each entity into a model within your newly created MV
 - Make API calls 
 ![API](https://github.com/teddydamian/ASYNC-Inn/blob/master/assets/Rooms.png)
 
+# DTOs
+
+![API](https://github.com/teddydamian/ASYNC-Inn/blob/master/assets/DTOS.png)
 ### Change Log
 1.0 Created MVC, Database. April 1st 2020
 1.1 Created Database Tables with Columns and Keys. April 2nd 2020
