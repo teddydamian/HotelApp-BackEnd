@@ -12,7 +12,7 @@ using ASYNC_InnTDCB.DTO;
 
 namespace ASYNC_InnTDCB.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/amenities")]
     [ApiController]
     public class AmenitiesController : Controller
     {
@@ -25,14 +25,14 @@ namespace ASYNC_InnTDCB.Controllers
 
         // GET: api/Amenities
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Amenities>>> GetAmenities()
+        public async Task<ActionResult<IEnumerable<AmenitiesDTO>>> GetAmenities()
         {
             return await _amenities.GetAllAmenities();
         }
 
         // GET: api/Amenities/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Amenities>> GetAmenitie(int id)
+        public async Task<ActionResult<AmenitiesDTO>> GetAmenitie(int id)
         {
             var amenities = await _amenities.GetAmenitieByID(id);
 

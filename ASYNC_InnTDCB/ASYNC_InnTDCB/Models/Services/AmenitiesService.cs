@@ -40,52 +40,40 @@ namespace ASYNC_InnTDCB.Models.Services
             /// Get all Amenities
             /// </summary>
             /// <returns></returns>
-            public async Task<List<Amenities>> GetAllAmenities()
+            public async Task<List<AmenitiesDTO>> GetAllAmenities()
             {
-                return await _context.Amenities.ToListAsync();
-            }
+                var allAmenities = await _context.Amenities.ToListAsync();
+                List<AmenitiesDTO> listAmenities = new List<AmenitiesDTO>();
+
+                foreach (var amenity in allAmenities)
+                {
+                    listAmenities.Add(new AmenitiesDTO
+                    {
+                        ID = amenity.ID,
+                        Name = amenity.Name
+                    });
+
+                }
+                return listAmenities;
+        }
 
             /// <summary>
             /// Get specific amenities by ID
             /// </summary>
             /// <param name="amenitiesID"></param>
             /// <returns></returns>
-            public async Task<Amenities> GetAmenitieByID(int amenitiesID)
+            public async Task<AmenitiesDTO> GetAmenitieByID(int amenitiesID)
             {
-            Amenities amenities = await _context.Amenities.FindAsync(amenitiesID);
-            return amenities;
+                Amenities amenities = await _context.Amenities.FindAsync(amenitiesID);
+                AmenitiesDTO amenitiesDTO = new AmenitiesDTO
+                {
+                    ID = amenities.ID,
+                    Name = amenities.Name,
 
-            //Amenities amenities = new Amenities();
-            //AmenitiesDTO amenitiesdto = new AmenitiesDTO();
+                };
+                return amenitiesDTO;
 
-            //amenities = _context.Amenities.Find(amenitiesID);
-            //amenitiesdto.Name = amenities.Name;
-            //amenitiesdto.ID = amenities.ID;
-
-
-            //var roomAmenities = await _context.RoomAmenities.Where(x => x.AmenitiesID == amenitiesID)
-            //    .Include(x => x.RoomID)
-            //    .ToListAsync();
-
-            //List<AmenitiesDTO> room = new List<AmenitiesDTO>();
-
-            //foreach (var ra in roomAmenities)
-            //{
-            //    AmenitiesDTO amy = new AmenitiesDTO();
-            //    amy.ID = ra.RoomID;
-            //    amy.Name = ra.Amenities.Name;
-            //    RoomDTO rdto = new RoomDTO
-            //    {
-
-
-            //        Name = hr.Room.Name
-            //    };
-            //    room.Add(rm);
-
-            //}
-            //hoteldto.Rooms = room;
-            //return hoteldto;
-        }
+            }
 
             /// <summary>
             /// Delete amenities by ID
@@ -94,11 +82,16 @@ namespace ASYNC_InnTDCB.Models.Services
             /// <returns></returns>
             public async Task RemoveAmenities(int amenitiesID)
             {
-            Amenities amenities = await GetAmenitieByID(amenitiesID);
+                AmenitiesDTO amenitiesDTO = await GetAmenitieByID(amenitiesID);
+                Amenities amenities = new Amenities()
+                {
+                    ID = amenitiesDTO.ID,
+                    Name = amenitiesDTO.Name
+                };
                 _context.Amenities.Remove(amenities);
                 await _context.SaveChangesAsync();
 
-            }
+        }
 
             /// <summary>
             /// Update an amenity by ID

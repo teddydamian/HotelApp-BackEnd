@@ -12,8 +12,8 @@ namespace ASYNC_InnTDCB.Models.Interfaces
         /// </summary>
         Task<Amenities> CreateAmenities(Amenities amenities);
         Task UpdateAmenities(int amenitiesID, Amenities amenities);
-        Task<List<Amenities>> GetAllAmenities();
-        Task<Amenities> GetAmenitieByID(int amenitiesID);
+        Task<List<AmenitiesDTO>> GetAllAmenities();
+        Task<AmenitiesDTO> GetAmenitieByID(int amenitiesID);
         Task RemoveAmenities(int amenitiesID);
     }
 }
