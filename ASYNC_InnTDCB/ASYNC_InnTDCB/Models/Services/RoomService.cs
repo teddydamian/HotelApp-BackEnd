@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASYNC_InnTDCB.DTO;
 using ASYNC_InnTDCB.Models.Interfaces;
 using ASYNC_InnTDCB.Properties.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -11,15 +12,18 @@ namespace ASYNC_InnTDCB.Models.Services
 {
     public class RoomService : IRoomManager
     {
+
         private ASYNCinnDbContext _context;
+        private IAmenitiesManager _amenities;
 
         /// <summary>
         /// Connecting DB to CRUD
         /// </summary>
         /// <param name="context"></param>
-        public RoomService(ASYNCinnDbContext context)
+        public RoomService(ASYNCinnDbContext context, IAmenitiesManager amenities)
         {
             _context = context;
+            _amenities = amenities;
         }
 
         /// <summary>
@@ -39,9 +43,26 @@ namespace ASYNC_InnTDCB.Models.Services
         /// Get all rooms
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Room>> GetAllRooms()
+        public async Task<List<RoomDTO>> GetAllRooms()
         {
-            return await _context.Rooms.ToListAsync();
+            var allRooms = await _context.Rooms.ToListAsync();
+            List<RoomDTO> allRoomDTO = new List<RoomDTO>();
+
+            foreach (var room in allRooms)
+            {
+                List<AmenitiesDTO> roomAmenityDTO = await GetAmenities(room.ID);
+                var roomDTO = new RoomDTO()
+                {
+                    ID = room.ID,
+                    Name = room.Name,
+                    Layout = room.Layout.ToString(),
+                    Amenities = roomAmenityDTO
+                };
+                allRoomDTO.Add(roomDTO);
+
+            }
+            return allRoomDTO;
+
         }
 
         /// <summary>
@@ -49,10 +70,28 @@ namespace ASYNC_InnTDCB.Models.Services
         /// </summary>
         /// <param name="roomID"></param>
         /// <returns></returns>
-        public async Task<Room> GetRoomByID(int roomID)
+        public async Task<RoomDTO> GetRoomByID(int roomID)
         {
-            Room room = await _context.Rooms.FindAsync(roomID);
-            return room;
+            var room = await _context.Rooms.FindAsync(roomID);
+            List<AmenitiesDTO> roomAmenityDTO = new List<AmenitiesDTO>();
+            foreach (var amenity in room.RoomAmenities)
+            {
+                var getAmenities = new AmenitiesDTO
+                {
+                    ID = amenity.AmenitiesID,
+                    Name = _context.Amenities.Find(amenity.AmenitiesID).Name,
+                };
+                roomAmenityDTO.Add(getAmenities);
+            }
+
+            RoomDTO roomDto = new RoomDTO
+            {
+                ID = room.ID,
+                Name = room.Name,
+                Layout = room.Layout.ToString(),
+                Amenities = roomAmenityDTO
+            };
+            return roomDto;
         }
 
         /// <summary>
@@ -62,11 +101,28 @@ namespace ASYNC_InnTDCB.Models.Services
         /// <returns></returns>
         public async Task RemoveRoom(int roomID)
         {
-            Room room = await GetRoomByID(roomID);
+            Room room = await _context.Rooms.FindAsync(roomID);
+
             _context.Rooms.Remove(room);
             await _context.SaveChangesAsync();
 
         }
+
+
+        public async Task<List<AmenitiesDTO>> GetAmenities(int roomId)
+        {
+            var roomAmenities = await _context.RoomAmenities.Where(x => x.RoomID == roomId).ToListAsync();
+
+            List<AmenitiesDTO> amenitiesResults = new List<AmenitiesDTO>();
+
+            foreach (var item in roomAmenities)
+            {
+                var items = await _amenities.GetAmenitieByID(item.AmenitiesID);
+                amenitiesResults.Add(items);
+            }
+            return amenitiesResults;
+        }
+
 
         /// <summary>
         /// Update the room
@@ -86,13 +142,15 @@ namespace ASYNC_InnTDCB.Models.Services
         /// <param name="amenitiesId"></param>
         /// <param name="roomId"></param>
         /// <returns></returns>
-        public async Task<List<Amenities>> GetAllRoomAmenities(int roomId)
+        public async Task<List<AmenitiesDTO>> GetAllRoomAmenities(int roomId)
         {
-            var roomAmenities = await _context.RoomAmenities.Where(roomAmenities => roomAmenities.RoomID == roomId)
-                                                            .Include(RoomAmenities => RoomAmenities.Amenities)
-                                                            .Select(amenity => amenity.Amenities)
-                                                            .ToListAsync();
-            return roomAmenities;
+            //var roomAmenities = await _context.RoomAmenities.Where(roomAmenities => roomAmenities.RoomID == roomId)
+            //                                                //.Include(RoomAmenities => RoomAmenities.Amenities)
+            //                                                //.Select(amenity => amenity.Amenities)
+            //                                                .ToListAsync();
+            //return roomAmenities;
+            return null;
         }
+
     }
 }

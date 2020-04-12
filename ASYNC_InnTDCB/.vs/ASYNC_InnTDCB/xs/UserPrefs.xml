@@ -1,17 +1,24 @@
 ﻿<Properties StartupConfiguration="{DAD041F8-DCE1-4407-96C5-A822B2A394AF}|Default">
   <MonoDevelop.Ide.ItemProperties.ASYNC__InnTDCB PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="ASYNC_InnTDCB/Models/Services/AmenitiesService.cs">
+    <Files>
+      <File FileName="ASYNC_InnTDCB/DTO/AmenitiesDTO.cs" Line="1" Column="1" />
+      <File FileName="ASYNC_InnTDCB/Models/Interfaces/IAmenitiesManager.cs" />
+      <File FileName="ASYNC_InnTDCB/Controllers/RoomController.cs" />
+      <File FileName="ASYNC_InnTDCB/Models/Services/AmenitiesService.cs" Line="20" Column="43" />
+      <File FileName="ASYNC_InnTDCB/Controllers/AmenitiesController.cs" />
+      <File FileName="ASYNC_InnTDCB/Models/Interfaces/IRoomManager.cs" />
+      <File FileName="ASYNC_InnTDCB/Models/Services/RoomService.cs" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ASYNC_InnTDCB" expanded="True">
-            <Node name="ASYNC_InnTDCB" expanded="True">
+            <Node name="ASYNC_InnTDCB" expanded="True" selected="True">
               <Node name="Controllers" expanded="True" />
               <Node name="DTO" expanded="True" />
               <Node name="Models" expanded="True">
-                <Node name="Interfaces" expanded="True">
-                  <Node name="IRoomManager.cs" selected="True" />
-                </Node>
+                <Node name="Interfaces" expanded="True" />
                 <Node name="Services" expanded="True" />
               </Node>
               <Node name="Properties" expanded="True">
@@ -20,9 +27,6 @@
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

@@ -8,10 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using ASYNC_InnTDCB.Models;
 using ASYNC_InnTDCB.Properties.Data;
 using ASYNC_InnTDCB.Models.Interfaces;
+using ASYNC_InnTDCB.DTO;
 
 namespace ASYNC_InnTDCB.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/rooms")]
     [ApiController]
     public class RoomController : Controller
     {
@@ -24,14 +25,14 @@ namespace ASYNC_InnTDCB.Controllers
 
         // GET: Room
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Room>>> GetRooms()
+        public async Task<ActionResult<IEnumerable<RoomDTO>>> GetRooms()
         {
             return await _room.GetAllRooms();
         }
 
         // GET: Room/Details/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Room>> GetRoom(int id)
+        public async Task<ActionResult<RoomDTO>> GetRoom(int id)
         {
             var room = await _room.GetRoomByID(id);
 
@@ -44,10 +45,11 @@ namespace ASYNC_InnTDCB.Controllers
         }
 
         // GET: Room/Details/5
-        [HttpGet("{amenitiesId}, {roomId}")]
-        public async Task<ActionResult<IEnumerable<Amenities>>> GetAllRoomAmenities(int roomId)
+        [HttpGet("{roomId}")]
+        public async Task<ActionResult<Room>> GetAllRoomAmenities(int roomId)
         {
-            return await _room.GetAllRoomAmenities(roomId);
+            //_room.GetAllRoomAmenities(roomId);
+            return null;
         }
 
         // PUT: api/Room/5
